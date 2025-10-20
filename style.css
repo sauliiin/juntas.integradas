@@ -1,0 +1,274 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f4f7f6;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+
+/* --- Abas --- */
+.tab-container {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 20px;
+}
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    border-radius: 5px 5px 0 0;
+    margin-right: 5px;
+}
+.tab.active {
+    background-color: #fff;
+    border-bottom: 2px solid #fff;
+    position: relative;
+    top: 2px;
+}
+.tab-content {
+    display: none;
+}
+.tab-content.active {
+    display: block;
+}
+
+/* --- Listas --- */
+.junta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+.junta-card, .portaria-card, .suplentes-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.junta-card h2, .portaria-card h2, .suplentes-card h2 {
+    font-size: 1.3em;
+    color: #16a085;
+    padding: 15px 20px;
+    margin: 0;
+    border-bottom: 1px solid #eee;
+}
+.junta-card ul, .portaria-card ul, .suplentes-card ul {
+    list-style: none;
+    padding: 0 20px 10px 20px;
+    margin: 0;
+}
+.junta-card li, .portaria-card li, .suplentes-card li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+.junta-card li:last-child, .suplentes-card li:last-child {
+    border-bottom: none;
+}
+.membro-info {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.membro-info span {
+    display: block;
+}
+.membro-nome {
+    font-weight: 500;
+}
+.membro-data {
+    font-size: 0.9em;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: #fff;
+    margin-top: 4px;
+    width: fit-content;
+}
+.renovavel-true {
+    background-color: #27ae60; /* Verde */
+}
+.renovavel-false {
+    background-color: #c0392b; /* Vermelho */
+}
+
+/* --- Botões Admin --- */
+.admin-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 5px;
+    margin-left: 5px;
+    color: #7f8c8d;
+}
+.delete-btn {
+    color: #c0392b;
+    font-weight: bold;
+}
+.delete-btn:hover {
+    color: #e74c3c;
+}
+.add-btn {
+    display: block;
+    width: calc(100% - 40px);
+    margin: 10px 20px 20px 20px;
+    padding: 10px;
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #27ae60;
+    background-color: #f9f9f9;
+    border: 2px dashed #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+}
+.add-btn:hover {
+    background-color: #f0f0f0;
+    border-color: #27ae60;
+}
+.logout-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: none; /* Oculto por padrão */
+}
+body.logged-in .logout-btn {
+    display: block; /* Mostra quando logado */
+}
+
+
+/* --- Portarias --- */
+.portaria-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.portaria-item span {
+    font-weight: 500;
+}
+.view-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* NOVO BOTÃO DE EDITAR */
+.edit-btn {
+    background-color: #f39c12; /* Laranja */
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+
+/* --- Modal --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.6);
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+.modal-content h2 {
+    margin-top: 0;
+}
+.modal-content label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 500;
+}
+.modal-content input[type="text"],
+.modal-content input[type="password"],
+.modal-content input[type="date"],
+.modal-content input[type="url"],
+.modal-content textarea {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+.modal-content textarea {
+    height: 150px;
+    resize: vertical;
+}
+.modal-content .checkbox-label {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+.modal-content .checkbox-label input {
+    width: auto;
+    margin-right: 10px;
+}
+.modal-content .button-group {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+    gap: 10px;
+}
+.modal-content .button-group button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+.modal-btn-primary {
+    background-color: #28a745;
+    color: white;
+}
+.modal-btn-secondary {
+    background-color: #6c757d;
+    color: white;
+}
+#loginError {
+    color: red;
+    display: none;
+    margin-top: 10px;
+}
+#portariaTextoDisplay {
+    white-space: pre-wrap;
+    background-color: #f9f9f9;
+    border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 4px;
+    max-height: 400px;
+    overflow-y: auto;
+}

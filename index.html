@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Juntas Fiscais</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Controle de Juntas de Julgamento Fiscal</h1>
+    <button id="logoutButton" class="logout-btn">Sair</button>
+
+    <div class="tab-container">
+        <div class="tab active" data-tab="membros">Membros</div>
+        <div class="tab" data-tab="portarias">Portarias de Nomeação</div>
+    </div>
+
+    <div id="membros" class="tab-content active">
+        <div class="junta-grid">
+            <div id="junta-I" class="junta-card"><h2>Junta-I</h2><ul></ul></div>
+            <div id="junta-II" class="junta-card"><h2>Junta-II</h2><ul></ul></div>
+            <div id="junta-III" class="junta-card"><h2>Junta-III</h2><ul></ul></div>
+            <div id="junta-IV" class="junta-card"><h2>Junta-IV</h2><ul></ul></div>
+            <div id="junta-V" class="junta-card"><h2>Junta-V</h2><ul></ul></div>
+        </div>
+        
+        <h2>Suplentes Atuais</h2>
+        <div id="suplentes" class="suplentes-card">
+            <ul></ul>
+            <button class="admin-btn add-btn" id="addSuplenteBtn">+</button>
+        </div>
+    </div>
+
+    <div id="portarias" class="tab-content">
+        <div class="portaria-card">
+            <h2>Portarias</h2>
+            <ul id="portariaList"></ul>
+            <button class="admin-btn add-btn" id="addPortariaBtn">+</button>
+        </div>
+    </div>
+
+    <div id="loginModal" class="modal">
+        <div class="modal-content">
+            <form id="loginForm">
+                <h2>Login de Administrador</h2>
+                <p>Você precisa estar logado para realizar esta ação.</p>
+                <label for="loginEmail">Login:</label>
+                <input type="text" id="loginEmail" placeholder="mestre@yoda.com" required>
+                
+                <label for="loginSenha">Senha:</label>
+                <input type="password" id="loginSenha" required>
+                
+                <p id="loginError">Login ou senha inválidos.</p>
+
+                <div class="button-group">
+                    <button type="button" class="modal-btn-secondary" id="loginCancelBtn">Cancelar</button>
+                    <button type="submit" class="modal-btn-primary">Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="membroModal" class="modal">
+        <div class="modal-content">
+            <form id="membroForm">
+                <h2 id="membroModalTitle">Adicionar Membro</h2>
+                <input type="hidden" id="membroJuntaId">
+                <input type="hidden" id="membroSuplenteMode">
+
+                <label for="membroNome">Nome:</label>
+                <input type="text" id="membroNome" required>
+                
+                <div id="membroFieldsTitular">
+                    <label for="membroDataFim">Data de Vencimento:</label>
+                    <input type="date" id="membroDataFim" required>
+                    
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="membroRenovavel">
+                        Possível renovação
+                    </label>
+                </div>
+                
+                <div class="button-group">
+                    <button type="button" class="modal-btn-secondary" id="membroCancelBtn">Cancelar</button>
+                    <button type="submit" class="modal-btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="portariaModal" class="modal">
+        <div class="modal-content">
+            <form id="portariaForm">
+                <h2 id="portariaModalTitle">Adicionar Portaria</h2>
+                <input type="hidden" id="portariaEditId">
+                
+                <label for="portariaTitulo">Título (Ex: PORTARIA SMPU Nº 012/2025 - 25/02/2025):</label>
+                <input type="text" id="portariaTitulo" required>
+                
+                <label for="portariaLink">Link:</label>
+                <input type="url" id="portariaLink" required>
+
+                <label for="portariaTexto">Texto da Portaria:</label>
+                <textarea id="portariaTexto" required></textarea>
+                
+                <div class="button-group">
+                    <button type="button" class="modal-btn-secondary" id="portariaCancelBtn">Cancelar</button>
+                    <button type="submit" class="modal-btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="viewPortariaModal" class="modal">
+        <div class="modal-content">
+            <h2 id="portariaTituloDisplay"></h2>
+            <label>Link:</label>
+            <p><a id="portariaLinkDisplay" href="#" target="_blank" rel="noopener noreferrer">Acessar Link</a></p>
+            <label>Texto:</label>
+            <pre id="portariaTextoDisplay"></pre>
+            <div class="button-group">
+                <button type="button" class="modal-btn-secondary" id="viewPortariaCloseBtn">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
