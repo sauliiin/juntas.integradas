@@ -263,7 +263,7 @@ body.logged-in .logout-btn {
     display: none;
     margin-top: 10px;
 }
-#portariaTextoDisplay {
+#portariaTextoDisplay, #atoTextoDisplay { /* Aplicado a ambos os modais de visualização */
     white-space: pre-wrap;
     background-color: #f9f9f9;
     border: 1px solid #eee;

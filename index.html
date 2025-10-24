@@ -12,11 +12,13 @@
     <button id="logoutButton" class="logout-btn">Sair</button>
 
     <div class="tab-container">
-        <div class="tab active" data-tab="membros">Membros</div>
+        <div class="tab active" data-tab="membros1">Membros 1ª Instância</div>
+        <div class="tab" data-tab="membros2">Membros 2ª Instância</div>
         <div class="tab" data-tab="portarias">Portarias de Nomeação</div>
+        <div class="tab" data-tab="atos">Atos do Prefeito</div>
     </div>
 
-    <div id="membros" class="tab-content active">
+    <div id="membros1" class="tab-content active">
         <div class="junta-grid">
             <div id="junta-I" class="junta-card"><h2>Junta-I</h2><ul></ul></div>
             <div id="junta-II" class="junta-card"><h2>Junta-II</h2><ul></ul></div>
@@ -25,10 +27,21 @@
             <div id="junta-V" class="junta-card"><h2>Junta-V</h2><ul></ul></div>
         </div>
         
-        <h2>Suplentes Atuais</h2>
-        <div id="suplentes" class="suplentes-card">
+        <h2>Suplentes 1ª Instância</h2>
+        <div id="suplentes1" class="suplentes-card"> <ul></ul>
+            <button class="admin-btn add-btn" id="addSuplente1Btn">+</button> </div>
+    </div>
+
+    <div id="membros2" class="tab-content">
+        <div class="junta-grid">
+            <div id="camara-1" class="junta-card"><h2>1ª Câmara</h2><ul></ul></div>
+            <div id="camara-2" class="junta-card"><h2>2ª Câmara</h2><ul></ul></div>
+        </div>
+        
+        <h2>Suplentes 2ª Instância</h2>
+        <div id="suplentes-2" class="suplentes-card">
             <ul></ul>
-            <button class="admin-btn add-btn" id="addSuplenteBtn">+</button>
+            <button class="admin-btn add-btn" id="addSuplente2Btn">+</button>
         </div>
     </div>
 
@@ -39,6 +52,14 @@
             <button class="admin-btn add-btn" id="addPortariaBtn">+</button>
         </div>
     </div>
+
+    <div id="atos" class="tab-content">
+        <div class="portaria-card"> <h2>Atos do Prefeito</h2>
+            <ul id="atosList"></ul>
+            <button class="admin-btn add-btn" id="addAtoBtn">+</button>
+        </div>
+    </div>
+
 
     <div id="loginModal" class="modal">
         <div class="modal-content">
@@ -65,13 +86,10 @@
         <div class="modal-content">
             <form id="membroForm">
                 <h2 id="membroModalTitle">Adicionar Membro</h2>
-                <input type="hidden" id="membroJuntaId">
-                <input type="hidden" id="membroSuplenteMode">
-
-                <label for="membroNome">Nome:</label>
+                <input type="hidden" id="membroCollectionRef"> <input type="hidden" id="membroDocId"> <input type="hidden" id="membroIsSuplente"> <label for="membroNome">Nome:</label>
                 <input type="text" id="membroNome" required>
                 
-                <div id="membroFieldsTitular">
+                <div id="membroFieldsTitular"> 
                     <label for="membroDataFim">Data de Vencimento:</label>
                     <input type="date" id="membroDataFim" required>
                     
@@ -121,6 +139,42 @@
             <pre id="portariaTextoDisplay"></pre>
             <div class="button-group">
                 <button type="button" class="modal-btn-secondary" id="viewPortariaCloseBtn">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="atoModal" class="modal">
+        <div class="modal-content">
+            <form id="atoForm">
+                <h2 id="atoModalTitle">Adicionar Ato do Prefeito</h2>
+                <input type="hidden" id="atoEditId">
+                
+                <label for="atoTitulo">Título (Ex: ATO GP Nº 842/2022):</label>
+                <input type="text" id="atoTitulo" required>
+                
+                <label for="atoLink">Link:</label>
+                <input type="url" id="atoLink" required>
+
+                <label for="atoTexto">Texto do Ato:</label>
+                <textarea id="atoTexto" required></textarea>
+                
+                <div class="button-group">
+                    <button type="button" class="modal-btn-secondary" id="atoCancelBtn">Cancelar</button>
+                    <button type="submit" class="modal-btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="viewAtoModal" class="modal">
+        <div class="modal-content">
+            <h2 id="atoTituloDisplay"></h2>
+            <label>Link:</label>
+            <p><a id="atoLinkDisplay" href="#" target="_blank" rel="noopener noreferrer">Acessar Link</a></p>
+            <label>Texto:</label>
+            <pre id="atoTextoDisplay"></pre>
+            <div class="button-group">
+                <button type="button" class="modal-btn-secondary" id="viewAtoCloseBtn">Fechar</button>
             </div>
         </div>
     </div>
